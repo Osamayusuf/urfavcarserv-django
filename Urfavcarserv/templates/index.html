@@ -1,0 +1,1036 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>UrfavcarServ</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Car repair and servicing in Nairobi Kenya" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        /* ── GLOBAL ── */
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            color: #333;
+        }
+
+        /* ── TOPBAR ── */
+        .topbar {
+            background-color: #1a1a2e;
+            padding: 10px 0;
+        }
+        .topbar small {
+            color: #ccc;
+            font-size: 13px;
+        }
+        .topbar .fa, .topbar .far {
+            color: #e74c3c;
+        }
+        .topbar .btn-sm-square {
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            background: #e74c3c;
+            color: #fff !important;
+            border: none;
+            transition: 0.3s;
+        }
+        .topbar .btn-sm-square:hover {
+            background: #fff;
+            color: #e74c3c !important;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            background-color: #1a1a2e !important;
+            padding: 0;
+        }
+        .navbar-brand h2 {
+            color: #e74c3c !important;
+            font-family: 'Barlow', sans-serif;
+            font-size: 1.6rem;
+        }
+        .navbar .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            padding: 28px 16px !important;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: #e74c3c !important;
+        }
+        .navbar .dropdown-menu {
+            background: #1a1a2e;
+            border: none;
+            border-top: 3px solid #e74c3c;
+        }
+        .navbar .dropdown-item {
+            color: #ccc;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+        .navbar .dropdown-item:hover {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .navbar .btn-primary {
+            background: #e74c3c;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .navbar .btn-primary:hover {
+            background: #c0392b;
+        }
+
+        /* ── CAROUSEL ── */
+        #header-carousel .carousel-item img {
+            height: 600px;
+            object-fit: cover;
+            filter: brightness(0.55);
+        }
+        .carousel-caption {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .carousel-caption h6 {
+            color: #e74c3c !important;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+        .carousel-caption h1 {
+            font-family: 'Barlow', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+        .carousel-caption .btn-primary {
+            background: #e74c3c;
+            border: none;
+            padding: 14px 32px;
+            font-weight: 600;
+        }
+        .carousel-caption .btn-primary:hover {
+            background: #c0392b;
+        }
+
+        /* ── FEATURES STRIP ── */
+        .features-strip {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .features-strip .feature-box {
+            border-right: 1px solid #eee;
+            padding: 40px 30px;
+        }
+        .features-strip .feature-box:last-child {
+            border-right: none;
+        }
+        .features-strip .feature-box i {
+            color: #e74c3c;
+        }
+        .features-strip .feature-box h5 {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .features-strip .feature-box p {
+            color: #666;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* ── ABOUT ── */
+        .about-section {
+            background: #f8f9fa;
+        }
+        .about-badge {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 30px 40px;
+        }
+        .about-badge h1 {
+            font-size: 3rem;
+            font-family: 'Barlow', sans-serif;
+        }
+        .step-number {
+            background: #e74c3c;
+            color: #fff !important;
+            font-weight: 700;
+            min-width: 45px;
+            height: 45px;
+        }
+
+        /* ── STATS ── */
+        .stats-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        .stats-section .stat-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(231, 76, 60, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .stats-section h2 {
+            font-family: 'Barlow', sans-serif;
+            font-size: 2.5rem;
+        }
+
+        /* ── SERVICES TABS ── */
+        .services-section {
+            background: #f8f9fa;
+        }
+        .services-section .nav-link {
+            background: #fff;
+            color: #333;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .services-section .nav-link:hover,
+        .services-section .nav-link.active {
+            background: #e74c3c;
+            color: #fff;
+            border-color: #e74c3c;
+        }
+        .services-section .nav-link i {
+            color: inherit;
+        }
+
+        /* ── BOOKING ── */
+        .booking-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+        .booking-form-box {
+            background: #e74c3c;
+            border-radius: 8px;
+        }
+        .booking-form-box .form-control,
+        .booking-form-box .form-select {
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .booking-form-box .btn-book {
+            background: #1a1a2e;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: none;
+            transition: 0.3s;
+        }
+        .booking-form-box .btn-book:hover {
+            background: #000;
+        }
+
+        /* ── TEAM ── */
+        .team-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .team-item:hover {
+            transform: translateY(-6px);
+        }
+        .team-overlay {
+            background: rgba(231, 76, 60, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .team-item:hover .team-overlay {
+            opacity: 1;
+        }
+        .team-overlay .btn-square {
+            background: #fff;
+            color: #e74c3c;
+            width: 38px;
+            height: 38px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonial-section {
+            background: #f8f9fa;
+        }
+        .testimonial-item img {
+            border: 3px solid #e74c3c;
+        }
+        .testimonial-text {
+            border-top: 3px solid #e74c3c;
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* ── FOOTER ── */
+        .footer-top {
+            background: #16213e;
+        }
+        .footer-bottom {
+            background: #1a1a2e;
+        }
+        .footer-top h4 {
+            color: #e74c3c;
+            font-family: 'Barlow', sans-serif;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .footer-top p,
+        .footer-top small {
+            color: #aaa;
+            font-size: 14px;
+        }
+        .footer-top .btn-link {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            padding: 4px 0;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .footer-top .btn-link:hover {
+            color: #e74c3c;
+            padding-left: 6px;
+        }
+        .footer-top .btn-social {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #444;
+            color: #aaa;
+            margin-right: 6px;
+            transition: 0.3s;
+        }
+        .footer-top .btn-social:hover {
+            background: #e74c3c;
+            border-color: #e74c3c;
+            color: #fff;
+        }
+        .footer-bottom {
+            padding: 20px 0;
+            color: #666;
+            font-size: 13px;
+        }
+        .footer-bottom a {
+            color: #e74c3c;
+            text-decoration: none;
+        }
+        .footer-menu a {
+            color: #666;
+            text-decoration: none;
+            margin-left: 16px;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+        .footer-menu a:hover {
+            color: #e74c3c;
+        }
+
+        /* ── SECTION HEADINGS ── */
+        .section-label {
+            color: #e74c3c;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: #1a1a2e;
+        }
+
+        /* ── BACK TO TOP ── */
+        .back-to-top {
+            background: #e74c3c;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 4px;
+        }
+        .back-to-top:hover {
+            background: #c0392b;
+        }
+        .step-box { display: flex; align-items: flex-start; gap: 16px; }
+.step-num { background: #e74c3c; color: #fff; font-weight: 700; min-width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 15px; flex-shrink: 0; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Topbar Start -->
+<div class="topbar">
+    <div class="container">
+        <div class="row d-none d-lg-flex align-items-center">
+            <div class="col-lg-7">
+                <div class="d-inline-flex align-items-center me-4">
+                    <i class="fa fa-map-marker-alt me-2" style="color:#e74c3c;"></i>
+                    <small style="color:#ccc;">5 Star Road, Nairobi, Kenya</small>
+                </div>
+                <div class="d-inline-flex align-items-center">
+                    <i class="far fa-clock me-2" style="color:#e74c3c;"></i>
+                    <small style="color:#ccc;">Mon - Fri : 07:00 AM - 07:00 PM</small>
+                </div>
+            </div>
+            <div class="col-lg-5 text-end">
+                <div class="d-inline-flex align-items-center me-4">
+                    <i class="fa fa-phone-alt me-2" style="color:#e74c3c;"></i>
+                    <small style="color:#ccc;">+254 074 737 838</small>
+                </div>
+                <a href="" style="color:#aaa; margin-left:8px;"><i class="fab fa-facebook-f"></i></a>
+                <a href="" style="color:#aaa; margin-left:8px;"><i class="fab fa-twitter"></i></a>
+                <a href="" style="color:#aaa; margin-left:8px;"><i class="fab fa-instagram"></i></a>
+                <a href="" style="color:#aaa; margin-left:8px;"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg sticky-top" style="background:#fff; border-bottom: 3px solid #e74c3c; padding: 0;">
+    <div class="container">
+
+        <!-- Logo -->
+        <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center">
+            <div style="background:#e74c3c; width:42px; height:42px; border-radius:6px; display:flex; align-items:center; justify-content:center; margin-right:10px;">
+                <i class="fa fa-car text-white"></i>
+            </div>
+            <div>
+                <span style="font-family:'Barlow',sans-serif; font-weight:700; font-size:1.3rem; color:#1a1a2e; line-height:1;"></span><span style="color:#e74c3c; font-family:'Barlow',sans-serif; font-weight:700; font-size:1.3rem;">UrfavcarServ</span>
+                <div style="font-size:10px; color:#999; letter-spacing:2px; text-transform:uppercase;">Auto Service Center</div>
+            </div>
+        </a>
+
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            style="border:2px solid #e74c3c; padding:6px 10px;">
+            <i class="fa fa-bars" style="color:#e74c3c;"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+            <!-- Links -->
+            <div class="navbar-nav mx-auto">
+                <a href="{% url 'home' %}" class="nav-item nav-link active"
+                    style="color:#1a1a2e; font-weight:600; padding:24px 16px; font-size:14px; letter-spacing:0.5px; text-transform:uppercase; transition:0.3s;">Home</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link"
+                    style="color:#1a1a2e; font-weight:600; padding:24px 16px; font-size:14px; letter-spacing:0.5px; text-transform:uppercase; transition:0.3s;">About</a>
+                <a href="{% url 'service' %}" class="nav-item nav-link"
+                    style="color:#1a1a2e; font-weight:600; padding:24px 16px; font-size:14px; letter-spacing:0.5px; text-transform:uppercase; transition:0.3s;">Services</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle"
+                        style="color:#1a1a2e; font-weight:600; padding:24px 16px; font-size:14px; letter-spacing:0.5px; text-transform:uppercase;"
+                        data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu border-0 shadow" style="border-top:3px solid #e74c3c !important; border-radius:0 0 8px 8px;">
+                        <a href="{% url 'booking' %}" class="dropdown-item" style="padding:10px 20px; font-size:14px; color:#333;">Booking</a>
+                        <a href="{% url 'team' %}" class="dropdown-item" style="padding:10px 20px; font-size:14px; color:#333;">Technicians</a>
+                        <a href="{% url 'testimonial' %}" class="dropdown-item" style="padding:10px 20px; font-size:14px; color:#333;">Testimonial</a>
+                    </div>
+                </div>
+                <a href="{% url 'contact' %}" class="nav-item nav-link"
+                    style="color:#1a1a2e; font-weight:600; padding:24px 16px; font-size:14px; letter-spacing:0.5px; text-transform:uppercase; transition:0.3s;">Contact</a>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="{% url 'booking' %}" class="btn d-none d-lg-flex align-items-center"
+                style="background:#e74c3c; color:#fff; font-weight:700; font-size:13px; letter-spacing:1px; text-transform:uppercase; padding:12px 24px; border-radius:4px; border:none; gap:8px;">
+                <i class="fa fa-calendar-check"></i> Book A Service
+            </a>
+
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+
+    <!-- Carousel Start -->
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src="{% static 'newimg/serv-1.webp' %}" alt="Car Repair">
+                <div class="carousel-caption d-flex align-items-center">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center justify-content-lg-start">
+                            <div class="col-10 col-lg-7 text-center text-lg-start">
+                                <h6 class="text-uppercase mb-3 animated slideInDown" style="color:#e74c3c; letter-spacing:3px;">// Car Servicing //</h6>
+                                <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown" style="font-family:'Barlow',sans-serif; font-weight:700;">Qualified Car Repair Service Center</h1>
+                                <a href="{% url 'service' %}" class="btn animated slideInDown py-3 px-5" style="background:#e74c3c; color:#fff; font-weight:700; text-transform:uppercase; letter-spacing:1px;">
+                                    Our Services <i class="fa fa-arrow-right ms-3"></i>
+                                </a>
+                            </div>
+                            <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
+                                <img class="img-fluid" src="{% static 'newimg/serv-5.jfif' %}" alt="Car">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="{% static 'newimg/serv-5.jfif' %}" alt="Car Wash">
+                <div class="carousel-caption d-flex align-items-center">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center justify-content-lg-start">
+                            <div class="col-10 col-lg-7 text-center text-lg-start">
+                                <h6 class="text-uppercase mb-3 animated slideInDown" style="color:#e74c3c; letter-spacing:3px;">// Car Servicing //</h6>
+                                <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown" style="font-family:'Barlow',sans-serif; font-weight:700;">Qualified Car Wash Service Center</h1>
+                                <a href="{% url 'booking' %}" class="btn animated slideInDown py-3 px-5" style="background:#e74c3c; color:#fff; font-weight:700; text-transform:uppercase; letter-spacing:1px;">
+                                    Book Now <i class="fa fa-arrow-right ms-3"></i>
+                                </a>
+                            </div>
+                            <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
+                                <img class="img-fluid" src="{% static 'newimg/serv-7.jpg' %}" alt="Car">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<!-- Carousel End -->
+
+
+    <!-- Features Strip Start -->
+    <div class="features-strip mb-5">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-lg-4 col-md-6 feature-box wow fadeInUp" data-wow-delay="0.1s">
+                    <i class="fa fa-certificate fa-2x mb-3"></i>
+                    <h5>Quality Servicing</h5>
+                    <p>Reliable diagnostics and professional maintenance to keep your vehicle at its best.</p>
+                </div>
+                <div class="col-lg-4 col-md-6 feature-box wow fadeInUp" data-wow-delay="0.3s">
+                    <i class="fa fa-users-cog fa-2x mb-3"></i>
+                    <h5>Expert Workers</h5>
+                    <p>Skilled professionals dedicated to precise, efficient, and high-quality automotive work.</p>
+                </div>
+                <div class="col-lg-4 col-md-6 feature-box wow fadeInUp" data-wow-delay="0.5s">
+                    <i class="fa fa-tools fa-2x mb-3"></i>
+                    <h5>Modern Equipment</h5>
+                    <p>Latest technology and tools to ensure the highest standard of vehicle care.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features Strip End -->
+
+
+    <!-- About Start -->
+<div class="about-section py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6" style="min-height: 420px;">
+                <div class="position-relative wow fadeIn" data-wow-delay="0.1s" style="min-height: 420px;">
+                    <img src="{% static 'newimg/serv-1.webp' %}"
+                        style="object-fit: cover; border-radius: 8px; position:absolute; top:0; left:0; width:100%; height:100%;"
+                        alt="About Us">
+                    <div class="about-badge position-absolute top-0 end-0 text-center">
+                        <h1 class="mb-0">2 <span class="fs-4">Yrs</span></h1>
+                        <p class="mb-0" style="color:#e74c3c; font-weight:600;">Experience</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <p style="color:#e74c3c; font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase;">// About Us //</p>
+                <h2 style="font-family:'Barlow',sans-serif; font-weight:700; color:#1a1a2e;" class="mb-4">
+                    <span style="color:#e74c3c;">UrfavcarServ</span> — The Best Place For Your Auto Care
+                </h2>
+                <p class="text-muted mb-4">We are Nairobi's trusted automotive service center, committed to delivering reliable, efficient, and high-quality car care for every customer.</p>
+                <div class="d-flex flex-column gap-3 mb-4">
+                    <div class="step-box wow fadeIn" data-wow-delay="0.1s">
+                        <div class="step-num">01</div>
+                        <div>
+                            <h6 class="mb-1">Professional & Expert</h6>
+                            <span class="text-muted small">Precision, quality, and a strong focus on customer satisfaction.</span>
+                        </div>
+                    </div>
+                    <div class="step-box wow fadeIn" data-wow-delay="0.3s">
+                        <div class="step-num"style>02</div>
+                        <div>
+                            <h6 class="mb-1">Quality Servicing Center</h6>
+                            <span class="text-muted small">Reliable, efficient, and high-standard automotive services.</span>
+                        </div>
+                    </div>
+                    <div class="step-box wow fadeIn" data-wow-delay="0.5s">
+                        <div class="step-num">03</div>
+                        <div>
+                            <h6 class="mb-1">Award Winning Workers</h6>
+                            <span class="text-muted small">Proven skill, dedication, and excellence in every job.</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'about' %}" class="btn py-3 px-5"
+                    style="background:#e74c3c; color:#fff; font-weight:700; border-radius:4px;">
+                    Read More <i class="fa fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+    <!-- Stats Start -->
+    <div class="stats-section py-5 my-5">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="stat-icon"><i class="fa fa-check fa-2x text-danger"></i></div>
+                    <h2 class="text-white mb-1" data-toggle="counter-up">2</h2>
+                    <p class="text-secondary mb-0">Years Experience</p>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="stat-icon"><i class="fa fa-users-cog fa-2x text-danger"></i></div>
+                    <h2 class="text-white mb-1" data-toggle="counter-up">15</h2>
+                    <p class="text-secondary mb-0">Expert Technicians</p>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="stat-icon"><i class="fa fa-users fa-2x text-danger"></i></div>
+                    <h2 class="text-white mb-1" data-toggle="counter-up">500</h2>
+                    <p class="text-secondary mb-0">Satisfied Clients</p>
+                </div>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <div class="stat-icon"><i class="fa fa-car fa-2x text-danger"></i></div>
+                    <h2 class="text-white mb-1" data-toggle="counter-up">800</h2>
+                    <p class="text-secondary mb-0">Complete Projects</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Stats End -->
+
+
+    <!-- Services Start -->
+    <div class="services-section py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp mb-5" data-wow-delay="0.1s">
+                <p class="section-label">// Our Services //</p>
+                <h2 class="section-title">Explore Our Services</h2>
+            </div>
+            <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-4">
+                    <div class="nav flex-column nav-pills">
+                        <button class="nav-link d-flex align-items-center p-4 mb-3 active" data-bs-toggle="pill" data-bs-target="#tab-pane-1" type="button">
+                            <i class="fa fa-car-side fa-2x me-3"></i>
+                            <h5 class="m-0">Diagnostic Test</h5>
+                        </button>
+                        <button class="nav-link d-flex align-items-center p-4 mb-3" data-bs-toggle="pill" data-bs-target="#tab-pane-2" type="button">
+                            <i class="fa fa-car fa-2x me-3"></i>
+                            <h5 class="m-0">Engine Servicing</h5>
+                        </button>
+                        <button class="nav-link d-flex align-items-center p-4 mb-3" data-bs-toggle="pill" data-bs-target="#tab-pane-3" type="button">
+                            <i class="fa fa-cog fa-2x me-3"></i>
+                            <h5 class="m-0">Tires Replacement</h5>
+                        </button>
+                        <button class="nav-link d-flex align-items-center p-4" data-bs-toggle="pill" data-bs-target="#tab-pane-4" type="button">
+                            <i class="fa fa-oil-can fa-2x me-3"></i>
+                            <h5 class="m-0">Oil Changing</h5>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="tab-pane-1">
+                            <div class="row g-4">
+                                <div class="col-md-6" style="min-height: 320px;">
+                                    <div class="position-relative h-100">
+                                        <img class="position-absolute img-fluid w-100 h-100" src="{% static 'newimg/redmatatu.jpg' %}" style="object-fit: cover; border-radius: 8px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-3">Diagnostic Test</h4>
+                                    <p class="text-muted mb-4">We use advanced diagnostic tools to accurately identify issues and ensure your vehicle gets the right fix.</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Full computer scan</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Engine fault detection</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Detailed report provided</p>
+                                    <a href="{% url 'booking' %}" class="btn btn-primary py-3 px-4 mt-3">Book Now <i class="fa fa-arrow-right ms-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-pane-2">
+                            <div class="row g-4">
+                                <div class="col-md-6" style="min-height: 320px;">
+                                    <div class="position-relative h-100">
+                                        <img class="position-absolute img-fluid w-100 h-100" src="{% static 'img/service-2.jpg' %}" style="object-fit: cover; border-radius: 8px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-3">Engine Servicing</h4>
+                                    <p class="text-muted mb-4">Complete engine servicing to keep your car running smoothly and prevent costly breakdowns.</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Oil & filter change</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Spark plug inspection</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Cooling system check</p>
+                                    <a href="{% url 'booking' %}" class="btn btn-primary py-3 px-4 mt-3">Book Now <i class="fa fa-arrow-right ms-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-pane-3">
+                            <div class="row g-4">
+                                <div class="col-md-6" style="min-height: 320px;">
+                                    <div class="position-relative h-100">
+                                        <img class="position-absolute img-fluid w-100 h-100" src="{% static 'img/service-3.jpg' %}" style="object-fit: cover; border-radius: 8px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-3">Tires Replacement</h4>
+                                    <p class="text-muted mb-4">Get the right tires fitted by experts for a safer, smoother, and more fuel-efficient drive.</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>All tire brands available</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Wheel balancing included</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Alignment check</p>
+                                    <a href="{% url 'booking' %}" class="btn btn-primary py-3 px-4 mt-3">Book Now <i class="fa fa-arrow-right ms-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-pane-4">
+                            <div class="row g-4">
+                                <div class="col-md-6" style="min-height: 320px;">
+                                    <div class="position-relative h-100">
+                                        <img class="position-absolute img-fluid w-100 h-100" src="{% static 'img/service-4.jpg' %}" style="object-fit: cover; border-radius: 8px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-3">Oil Changing</h4>
+                                    <p class="text-muted mb-4">Regular oil changes to extend your engine life and maintain peak performance.</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Synthetic & mineral options</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Filter replacement</p>
+                                    <p><i class="fa fa-check text-danger me-2"></i>Quick 30-minute service</p>
+                                    <a href="{% url 'booking' %}" class="btn btn-primary py-3 px-4 mt-3">Book Now <i class="fa fa-arrow-right ms-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+
+    <!-- Booking Start -->
+    <div class="booking-section py-5 my-5">
+        <div class="container">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 py-5 wow fadeInLeft" data-wow-delay="0.1s">
+                    <p class="section-label">// Book A Service //</p>
+                    <h2 class="section-title text-white mb-4">Certified and Award Winning Car Repair Service Provider</h2>
+                    <p style="color:#aaa;">We deliver reliable, high-quality automotive service you can trust — from diagnostics to full repairs.</p>
+                    <ul class="list-unstyled mt-4" style="color:#aaa;">
+                        <li class="mb-2"><i class="fa fa-check text-danger me-2"></i>Qualified & experienced technicians</li>
+                        <li class="mb-2"><i class="fa fa-check text-danger me-2"></i>Transparent pricing — no hidden fees</li>
+                        <li class="mb-2"><i class="fa fa-check text-danger me-2"></i>Fast turnaround times</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
+                    <div class="booking-form-box p-5">
+                        <h3 class="text-white text-center mb-4">Book For A Service</h3>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" style="height: 50px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="email" class="form-control" placeholder="Your Email" style="height: 50px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <select class="form-select" style="height: 50px;">
+                                        <option selected>Select A Service</option>
+                                        <option>Diagnostic Test</option>
+                                        <option>Engine Servicing</option>
+                                        <option>Tires Replacement</option>
+                                        <option>Oil Changing</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="date" class="form-control" placeholder="Service Date" style="height: 50px;">
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" rows="3" placeholder="Special Request"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-book w-100 py-3" type="submit">Book Now <i class="fa fa-arrow-right ms-2"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Booking End -->
+
+
+    <!-- Team Start -->
+    <div class="py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp mb-5" data-wow-delay="0.1s">
+                <p class="section-label">// Our Technicians //</p>
+                <h2 class="section-title">Meet Our Expert Team</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{% static 'newimg/ruto.jpg' %}" alt="Ruto" style="height:280px; object-fit:cover;">
+                            <div class="team-overlay position-absolute start-0 top-0 w-100 h-100">
+                                <a class="btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn-square mx-2" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 bg-white">
+                            <h5 class="fw-bold mb-0">Ruto</h5>
+                            <small class="text-muted">Lead Technician</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{% static 'newimg/john.jpg' %}" alt="John" style="height:280px; object-fit:cover;">
+                            <div class="team-overlay position-absolute start-0 top-0 w-100 h-100">
+                                <a class="btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn-square mx-2" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 bg-white">
+                            <h5 class="fw-bold mb-0">John</h5>
+                            <small class="text-muted">Engine Specialist</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{% static 'newimg/mary.jpg' %}" alt="Mary" style="height:280px; object-fit:cover;">
+                            <div class="team-overlay position-absolute start-0 top-0 w-100 h-100">
+                                <a class="btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn-square mx-2" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 bg-white">
+                            <h5 class="fw-bold mb-0">Mary</h5>
+                            <small class="text-muted">Diagnostics Expert</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{% static 'newimg/kevin.jpg' %}" alt="Kevin" style="height:280px; object-fit:cover;">
+                            <div class="team-overlay position-absolute start-0 top-0 w-100 h-100">
+                                <a class="btn-square" href=""><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn-square mx-2" href=""><i class="fab fa-twitter"></i></a>
+                                <a class="btn-square" href=""><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 bg-white">
+                            <h5 class="fw-bold mb-0">Kevin</h5>
+                            <small class="text-muted">Tire & Wheel Expert</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="testimonial-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="section-label">// Testimonials //</p>
+                <h2 class="section-title">What Our Clients Say</h2>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                <div class="testimonial-item text-center px-3">
+                    <img class="rounded-circle mx-auto mb-3" src="{% static 'newimg/MR KENOTI.webp' %}"
+                        style="width: 80px; height: 80px; object-fit:cover; border: 3px solid #e74c3c;">
+                    <h5 class="mb-0">mr kenoti</h5>
+                    <small class="text-muted">Customer</small>
+                    <div class="testimonial-text bg-white p-4 mt-3">
+                        <p class="mb-0 text-muted">I had an amazing experience! The team was professional, quick, and very reliable. My car is running perfectly again. Highly recommended.</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center px-3">
+                    <img class="rounded-circle mx-auto mb-3" src="{% static 'newimg/ruqiyo.webp' %}"
+                        style="width: 80px; height: 80px; object-fit:cover; border: 3px solid #e74c3c;">
+                    <h5 class="mb-0">Ruqiyo</h5>
+                    <small class="text-muted">Customer</small>
+                    <div class="testimonial-text bg-white p-4 mt-3">
+                        <p class="mb-0 text-muted">Excellent service and friendly staff. They explained everything clearly and fixed my car on time. I will definitely come back.</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center px-3">
+                    <img class="rounded-circle mx-auto mb-3" src="{% static 'imagesown/oip4.webp' %}"
+                        style="width: 80px; height: 80px; object-fit:cover; border: 3px solid #e74c3c;">
+                    <h5 class="mb-0">Nicole</h5>
+                    <small class="text-muted">Customer</small>
+                    <div class="testimonial-text bg-white p-4 mt-3">
+                        <p class="mb-0 text-muted">Very impressed with the quality of work. The team paid attention to every detail and delivered beyond my expectations.</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center px-3">
+                    <img class="rounded-circle mx-auto mb-3" src="{% static 'imagesown/OIP3.webp' %}"
+                        style="width: 80px; height: 80px; object-fit:cover; border: 3px solid #e74c3c;">
+                    <h5 class="mb-0">Erick</h5>
+                    <small class="text-muted">Customer</small>
+                    <div class="testimonial-text bg-white p-4 mt-3">
+                        <p class="mb-0 text-muted">Affordable, fast, and trustworthy service. You can tell they really care about their customers and their work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+
+    <!-- Footer Start -->
+    <div class="footer-top pt-5 mt-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4>Urfavcarserv</h4>
+                    <p>Your trusted car service center in Nairobi, Kenya. Quality repairs, expert technicians, modern equipment.</p>
+                    <p><i class="fa fa-map-marker-alt me-2" style="color:#e74c3c;"></i>5 Star Road, Nairobi, Kenya</p>
+                    <p><i class="fa fa-phone-alt me-2" style="color:#e74c3c;"></i>+254 074 737 838</p>
+                    <p><i class="fa fa-envelope me-2" style="color:#e74c3c;"></i>binanas277@gmail.com</p>
+                    <div class="mt-3">
+                        <a class="btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn-social" href=""><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Opening Hours</h4>
+                    <p class="mb-1" style="color:#e74c3c; font-weight:600;">Monday - Friday</p>
+                    <p>09:00 AM - 09:00 PM</p>
+                    <p class="mb-1" style="color:#e74c3c; font-weight:600;">Saturday - Sunday</p>
+                    <p>09:00 AM - 12:00 PM</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Our Services</h4>
+                    <a class="btn-link" href="{% url 'service' %}">Diagnostic Test</a>
+                    <a class="btn-link" href="{% url 'service' %}">Engine Servicing</a>
+                    <a class="btn-link" href="{% url 'service' %}">Tires Replacement</a>
+                    <a class="btn-link" href="{% url 'service' %}">Oil Changing</a>
+                    <a class="btn-link" href="{% url 'service' %}">Vacuum Cleaning</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for updates, offers, and the latest automotive tips.</p>
+                    <form method="POST" action="{% url 'newsletter' %}">
+                        {% csrf_token %}
+                        <div class="position-relative">
+                            <input class="form-control border-0 py-3 ps-4 pe-5"
+                                type="email" name="email" placeholder="Your email"
+                                style="background:#0d1b2a; color:#fff;" required>
+                            <button type="submit" class="btn position-absolute top-0 end-0 mt-2 me-2"
+                                style="background:#e74c3c; color:#fff; border:none;">SignUp</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    &copy; <a href="#">Urfavcarserv</a>, All Rights Reserved. Designed By <a href="">Osama</a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'about' %}">About</a>
+                        <a href="{% url 'contact' %}">Contact</a>
+                        <a href="">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn back-to-top btn-lg-square position-fixed bottom-0 end-0 m-4">
+        <i class="bi bi-arrow-up text-white"></i>
+    </a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{% static 'lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <script>
+        // WOW animations init
+        new WOW().init();
+    </script>
+</body>
+
+</html>

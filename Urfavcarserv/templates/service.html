@@ -1,0 +1,566 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Services — Urfavcarserv</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Car Repair Nairobi, Auto Service Kenya" name="keywords">
+    <meta content="Professional car repair services in Nairobi" name="description">
+
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Ubuntu', sans-serif; color: #333; }
+
+        /* ── TOPBAR ── */
+        .topbar { background-color: #1a1a2e; padding: 10px 0; }
+        .topbar small { color: #ccc; font-size: 13px; }
+        .topbar i { color: #e74c3c; }
+        .topbar a { color: #aaa; margin-left: 10px; transition: 0.3s; }
+        .topbar a:hover { color: #e74c3c; }
+
+        /* ── NAVBAR ── */
+        .navbar { background: #fff !important; border-bottom: 3px solid #e74c3c; padding: 0; }
+        .navbar-brand span.brand-main { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1a1a2e; }
+        .navbar-brand span.brand-accent { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 1.3rem; color: #e74c3c; }
+        .navbar-brand small { font-size: 10px; color: #999; letter-spacing: 2px; text-transform: uppercase; display: block; }
+        .navbar .nav-link { color: #1a1a2e !important; font-weight: 600; padding: 24px 16px !important; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase; transition: 0.3s; }
+        .navbar .nav-link:hover, .navbar .nav-link.active { color: #e74c3c !important; }
+        .navbar .dropdown-menu { background: #fff; border: none; border-top: 3px solid #e74c3c; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 0 0 8px 8px; }
+        .navbar .dropdown-item { color: #333; padding: 10px 20px; font-weight: 500; font-size: 14px; transition: 0.3s; }
+        .navbar .dropdown-item:hover { background: #e74c3c; color: #fff; }
+        .navbar .btn-quote { background: #e74c3c; color: #fff; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; padding: 12px 24px; border-radius: 4px; border: none; }
+        .navbar .btn-quote:hover { background: #c0392b; color: #fff; }
+
+        /* ── PAGE HEADER ── */
+        .page-header { position: relative; background-size: cover; background-position: center; }
+        .page-header::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
+        .page-header-inner { position: relative; z-index: 1; padding: 80px 0; }
+        .page-header h1 { font-family: 'Barlow', sans-serif; font-weight: 700; }
+        .breadcrumb-item a { color: #e74c3c; text-decoration: none; }
+        .breadcrumb-item + .breadcrumb-item::before { color: #aaa; }
+
+        /* ── SERVICES TABS ── */
+        .services-section { background: #f8f9fa; }
+        .services-section .nav-link {
+            background: #fff;
+            color: #1a1a2e;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-bottom: 12px;
+        }
+        .services-section .nav-link:hover,
+        .services-section .nav-link.active {
+            background: #e74c3c;
+            color: #fff !important;
+            border-color: #e74c3c;
+        }
+        .services-section .nav-link h5 { margin: 0; font-family: 'Barlow', sans-serif; }
+        .services-section .tab-pane img { border-radius: 8px; }
+        .check-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .check-item i { color: #e74c3c; font-size: 14px; }
+
+        /* ── BOOKING ── */
+        .booking-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+        .booking-form-box { background: #e74c3c; border-radius: 8px; }
+        .booking-form-box .form-control,
+        .booking-form-box .form-select { border-radius: 4px; font-size: 14px; border: none; }
+        .booking-form-box .btn-book { background: #1a1a2e; color: #fff; font-weight: 700; letter-spacing: 1px; border: none; transition: 0.3s; }
+        .booking-form-box .btn-book:hover { background: #000; }
+
+        /* ── EXTRA SERVICES CARDS ── */
+        .service-card { background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: 0.3s; border-top: 3px solid transparent; }
+        .service-card:hover { border-top-color: #e74c3c; transform: translateY(-4px); }
+        .service-card i { color: #e74c3c; margin-bottom: 16px; }
+        .service-card h5 { font-family: 'Barlow', sans-serif; font-weight: 700; color: #1a1a2e; }
+        .service-card p { color: #666; font-size: 14px; }
+
+        /* ── FOOTER ── */
+        .footer-top { background: #16213e; }
+        .footer-top h4 { color: #e74c3c; font-family: 'Barlow', sans-serif; font-weight: 700; margin-bottom: 20px; }
+        .footer-top p { color: #aaa; font-size: 14px; }
+        .footer-top i { color: #e74c3c; }
+        .footer-top .btn-link { color: #aaa; text-decoration: none; display: block; padding: 4px 0; font-size: 14px; transition: 0.3s; }
+        .footer-top .btn-link:hover { color: #e74c3c; padding-left: 6px; }
+        .btn-social { width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #444; color: #aaa; margin-right: 6px; transition: 0.3s; text-decoration: none; }
+        .btn-social:hover { background: #e74c3c; border-color: #e74c3c; color: #fff; }
+        .footer-bottom { background: #1a1a2e; padding: 20px 0; }
+        .footer-bottom p { color: #666; font-size: 13px; margin: 0; }
+        .footer-bottom a { color: #e74c3c; text-decoration: none; }
+        .footer-menu a { color: #666; text-decoration: none; margin-left: 16px; font-size: 13px; transition: 0.3s; }
+        .footer-menu a:hover { color: #e74c3c; }
+
+        /* ── BACK TO TOP ── */
+        .back-to-top { background: #e74c3c; border: none; width: 45px; height: 45px; border-radius: 4px; position: fixed; bottom: 30px; right: 30px; display: none; }
+        .back-to-top:hover { background: #c0392b; }
+
+        /* ── SECTION TITLE ── */
+        .section-title-styled { color: #e74c3c; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+        .section-heading-styled { font-family: 'Barlow', sans-serif; font-weight: 700; color: #1a1a2e; }
+
+        /* ── BOOK NOW LINK ── */
+        .book-now-link { color: #e74c3c; font-weight: 600; text-decoration: none; font-size: 13px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Topbar Start -->
+    <div class="topbar">
+        <div class="container">
+            <div class="row d-none d-lg-flex align-items-center">
+                <div class="col-lg-7">
+                    <div class="d-inline-flex align-items-center me-4">
+                        <i class="fa fa-map-marker-alt me-2"></i>
+                        <small>5 Star Road, Nairobi, Kenya</small>
+                    </div>
+                    <div class="d-inline-flex align-items-center">
+                        <i class="far fa-clock me-2"></i>
+                        <small>Mon - Fri : 07:00 AM - 07:00 PM</small>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-end">
+                    <div class="d-inline-flex align-items-center me-4">
+                        <i class="fa fa-phone-alt me-2"></i>
+                        <small>+254 115 164 670</small>
+                    </div>
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center">
+                <div style="background:#e74c3c; width:42px; height:42px; border-radius:6px; display:flex; align-items:center; justify-content:center; margin-right:10px;">
+                    <i class="fa fa-car text-white"></i>
+                </div>
+                <div>
+                    <span class="brand-main">Urfavcar</span><span class="brand-accent">Serv</span>
+                    <small>Auto Service Center</small>
+                </div>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                style="border: 2px solid #e74c3c; padding: 6px 10px;">
+                <i class="fa fa-bars" style="color:#e74c3c;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto">
+                    <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                    <a href="{% url 'service' %}" class="nav-item nav-link active">Services</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu">
+                            <a href="{% url 'booking' %}" class="dropdown-item">Booking</a>
+                            <a href="{% url 'team' %}" class="dropdown-item">Technicians</a>
+                            <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
+                            <a href="{% url 'error404' %}" class="dropdown-item">404 Page</a>
+                        </div>
+                    </div>
+                    <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                </div>
+                <a href="{% url 'booking' %}" class="btn btn-quote d-none d-lg-block">
+                    <i class="fa fa-calendar-check me-2"></i> Book A Service
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="page-header mb-5" style="background-image: url('{% static "newimg/serv-7.jpg" %}');">
+        <div class="page-header-inner">
+            <div class="container text-center">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Our Services</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center text-uppercase">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Services</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Service Cards Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp mb-5" data-wow-delay="0.1s">
+                <p class="section-title-styled">// What We Offer //</p>
+                <h2 class="section-heading-styled">Everything Your Car Needs</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-card text-center">
+                        <i class="fa fa-car-side fa-3x"></i>
+                        <h5 class="mt-3 mb-2">Diagnostic Test</h5>
+                        <p>Full computer scan and fault detection to pinpoint issues fast and accurately.</p>
+                        <a href="{% url 'booking' %}" class="book-now-link">Book Now →</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="service-card text-center">
+                        <i class="fa fa-car fa-3x"></i>
+                        <h5 class="mt-3 mb-2">Engine Servicing</h5>
+                        <p>Complete engine overhaul, tuning, and cooling system checks for peak performance.</p>
+                        <a href="{% url 'booking' %}" class="book-now-link">Book Now →</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-card text-center">
+                        <i class="fa fa-cog fa-3x"></i>
+                        <h5 class="mt-3 mb-2">Tires Replacement</h5>
+                        <p>All tire brands available with wheel balancing and alignment check included.</p>
+                        <a href="{% url 'booking' %}" class="book-now-link">Book Now →</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="service-card text-center">
+                        <i class="fa fa-oil-can fa-3x"></i>
+                        <h5 class="mt-3 mb-2">Oil Changing</h5>
+                        <p>Quick 30-minute oil and filter change service to extend your engine's life.</p>
+                        <a href="{% url 'booking' %}" class="book-now-link">Book Now →</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-card text-center">
+                        <i class="fa fa-shower fa-3x"></i>
+                        <h5 class="mt-3 mb-2">Vacuum Cleaning</h5>
+                        <p>Full interior vacuum and detailing to keep your car fresh and clean inside.</p>
+                        <a href="{% url 'booking' %}" class="book-now-link">Book Now →</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="service-card text-center">
+                        <i class="fa fa-tools fa-3x"></i>
+                        <h5 class="mt-3 mb-2">Brake Service</h5>
+                        <p>Brake pad replacement, disc resurfacing, and fluid checks for your safety.</p>
+                        <a href="{% url 'booking' %}" class="book-now-link">Book Now →</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-card text-center">
+                        <i class="fa fa-bolt fa-3x"></i>
+                        <h5 class="mt-3 mb-2">Electrical Repairs</h5>
+                        <p>Wiring, battery, alternator, and all electrical system diagnostics and repairs.</p>
+                        <a href="{% url 'booking' %}" class="book-now-link">Book Now →</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.8s">
+                    <div class="service-card text-center">
+                        <i class="fa fa-wind fa-3x"></i>
+                        <h5 class="mt-3 mb-2">AC Service</h5>
+                        <p>Air conditioning regas, leak detection, and full AC system servicing.</p>
+                        <a href="{% url 'booking' %}" class="book-now-link">Book Now →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service Cards End -->
+
+
+    <!-- Services Tabs Start -->
+    <div class="services-section py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp mb-5" data-wow-delay="0.1s">
+                <p style="color:#e74c3c; font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase;">// Our Services //</p>
+                <h2 style="font-family:'Barlow',sans-serif; font-weight:700; color:#1a1a2e;">Explore In Detail</h2>
+            </div>
+            <div class="row g-4 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="col-lg-4">
+                    <div class="nav flex-column nav-pills">
+                        <button class="nav-link d-flex align-items-center p-4 active" data-bs-toggle="pill" data-bs-target="#tab-pane-1" type="button">
+                            <i class="fa fa-car-side fa-2x me-3"></i>
+                            <h5>Diagnostic Test</h5>
+                        </button>
+                        <button class="nav-link d-flex align-items-center p-4" data-bs-toggle="pill" data-bs-target="#tab-pane-2" type="button">
+                            <i class="fa fa-car fa-2x me-3"></i>
+                            <h5>Engine Servicing</h5>
+                        </button>
+                        <button class="nav-link d-flex align-items-center p-4" data-bs-toggle="pill" data-bs-target="#tab-pane-3" type="button">
+                            <i class="fa fa-cog fa-2x me-3"></i>
+                            <h5>Tires Replacement</h5>
+                        </button>
+                        <button class="nav-link d-flex align-items-center p-4" data-bs-toggle="pill" data-bs-target="#tab-pane-4" type="button">
+                            <i class="fa fa-oil-can fa-2x me-3"></i>
+                            <h5>Oil Changing</h5>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="tab-pane-1">
+                            <div class="row g-4">
+                                <div class="col-md-6" style="min-height: 320px;">
+                                    <div class="position-relative h-100">
+                                        <img class="position-absolute img-fluid w-100 h-100"
+                                            src="{% static 'newimg/serv-2.webp' %}"
+                                            style="object-fit: cover; border-radius:8px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-3" style="font-family:'Barlow',sans-serif; color:#1a1a2e;">Advanced Computer Diagnostics</h4>
+                                    <p class="text-muted mb-4">We use professional scanning tools to identify electronic and mechanical faults in modern vehicles quickly and accurately.</p>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Error Code Clearing</span></div>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Sensor Calibration</span></div>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>System Health Reports</span></div>
+                                    <a href="{% url 'booking' %}" class="btn mt-4 py-3 px-4"
+                                        style="background:#e74c3c; color:#fff; font-weight:700; border-radius:4px;">
+                                        Book Now <i class="fa fa-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-pane-2">
+                            <div class="row g-4">
+                                <div class="col-md-6" style="min-height: 320px;">
+                                    <div class="position-relative h-100">
+                                        <img class="position-absolute img-fluid w-100 h-100"
+                                            src="{% static 'img/service-2.jpg' %}"
+                                            style="object-fit: cover; border-radius:8px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-3" style="font-family:'Barlow',sans-serif; color:#1a1a2e;">Expert Engine Overhaul</h4>
+                                    <p class="text-muted mb-4">Our mechanics specialize in both petrol and diesel engines, ensuring your car stays powerful and efficient on Kenyan roads.</p>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Engine Tuning</span></div>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Cooling System Check</span></div>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Belt & Chain Services</span></div>
+                                    <a href="{% url 'booking' %}" class="btn mt-4 py-3 px-4"
+                                        style="background:#e74c3c; color:#fff; font-weight:700; border-radius:4px;">
+                                        Book Now <i class="fa fa-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-pane-3">
+                            <div class="row g-4">
+                                <div class="col-md-6" style="min-height: 320px;">
+                                    <div class="position-relative h-100">
+                                        <img class="position-absolute img-fluid w-100 h-100"
+                                            src="{% static 'img/service-3.jpg' %}"
+                                            style="object-fit: cover; border-radius:8px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-3" style="font-family:'Barlow',sans-serif; color:#1a1a2e;">Professional Tires Replacement</h4>
+                                    <p class="text-muted mb-4">Get the right tires fitted by experts for a safer, smoother, and more fuel-efficient drive on Nairobi roads.</p>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>All Tire Brands Available</span></div>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Wheel Balancing Included</span></div>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Alignment Check</span></div>
+                                    <a href="{% url 'booking' %}" class="btn mt-4 py-3 px-4"
+                                        style="background:#e74c3c; color:#fff; font-weight:700; border-radius:4px;">
+                                        Book Now <i class="fa fa-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-pane-4">
+                            <div class="row g-4">
+                                <div class="col-md-6" style="min-height: 320px;">
+                                    <div class="position-relative h-100">
+                                        <img class="position-absolute img-fluid w-100 h-100"
+                                            src="{% static 'img/service-4.jpg' %}"
+                                            style="object-fit: cover; border-radius:8px;" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="mb-3" style="font-family:'Barlow',sans-serif; color:#1a1a2e;">Quick Oil Changing</h4>
+                                    <p class="text-muted mb-4">Regular oil changes to extend your engine life and maintain peak performance — done in just 30 minutes.</p>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Synthetic & Mineral Options</span></div>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Filter Replacement</span></div>
+                                    <div class="check-item"><i class="fa fa-check"></i><span>Quick 30-Minute Service</span></div>
+                                    <a href="{% url 'booking' %}" class="btn mt-4 py-3 px-4"
+                                        style="background:#e74c3c; color:#fff; font-weight:700; border-radius:4px;">
+                                        Book Now <i class="fa fa-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services Tabs End -->
+
+
+    <!-- Booking Start -->
+    <div class="booking-section py-5 my-5">
+        <div class="container">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 py-5 wow fadeInLeft" data-wow-delay="0.1s">
+                    <p style="color:#e74c3c; font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase;">// Book A Service //</p>
+                    <h2 style="font-family:'Barlow',sans-serif; font-weight:700; color:#fff;" class="mb-4">Nairobi's Trusted Car Repair Service Provider</h2>
+                    <p style="color:#aaa;">Experience peace of mind with Urfavcarserv. We offer transparent pricing, genuine spare parts, and a proven track record of excellence.</p>
+                    <ul class="list-unstyled mt-4" style="color:#aaa;">
+                        <li class="mb-2"><i class="fa fa-check text-danger me-2"></i>Qualified & experienced technicians</li>
+                        <li class="mb-2"><i class="fa fa-check text-danger me-2"></i>Transparent pricing — no hidden fees</li>
+                        <li class="mb-2"><i class="fa fa-check text-danger me-2"></i>Genuine spare parts guaranteed</li>
+                        <li class="mb-2"><i class="fa fa-check text-danger me-2"></i>Fast turnaround times</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
+                    <div class="booking-form-box p-5">
+                        <h3 class="text-white text-center mb-4">Book For A Service</h3>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" style="height: 50px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="email" class="form-control" placeholder="Your Email" style="height: 50px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <select class="form-select" style="height: 50px;">
+                                        <option selected>Select A Service</option>
+                                        <option>Diagnostic Test</option>
+                                        <option>Engine Servicing</option>
+                                        <option>Tire Replacement</option>
+                                        <option>Oil Changing</option>
+                                        <option>Brake Service</option>
+                                        <option>Electrical Repairs</option>
+                                        <option>AC Service</option>
+                                        <option>Vacuum Cleaning</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="date" class="form-control" style="height: 50px;">
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" rows="3" placeholder="Special Request"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-book w-100 py-3" type="submit">
+                                        Book Now <i class="fa fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Booking End -->
+
+
+    <!-- Footer Start -->
+    <div class="footer-top pt-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4>Urfavcarserv</h4>
+                    <p>Your trusted car service center in Nairobi, Kenya. Quality repairs, expert technicians, modern equipment.</p>
+                    <p><i class="fa fa-map-marker-alt me-2"></i>5 Star Road, Nairobi, Kenya</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>+254 115 164 670</p>
+                    <p><i class="fa fa-envelope me-2"></i>binanas277@gmail.com</p>
+                    <div class="mt-3">
+                        <a class="btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn-social" href=""><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Opening Hours</h4>
+                    <p class="mb-1" style="color:#e74c3c; font-weight:600;">Monday - Friday</p>
+                    <p>09:00 AM - 09:00 PM</p>
+                    <p class="mb-1" style="color:#e74c3c; font-weight:600;">Saturday - Sunday</p>
+                    <p>09:00 AM - 12:00 PM</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Our Services</h4>
+                    <a class="btn-link" href="{% url 'service' %}">Diagnostic Test</a>
+                    <a class="btn-link" href="{% url 'service' %}">Engine Servicing</a>
+                    <a class="btn-link" href="{% url 'service' %}">Tires Replacement</a>
+                    <a class="btn-link" href="{% url 'service' %}">Oil Changing</a>
+                    <a class="btn-link" href="{% url 'service' %}">Vacuum Cleaning</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for updates, offers, and the latest automotive tips.</p>
+                    <form method="POST" action="{% url 'newsletter' %}">
+                        {% csrf_token %}
+                        <div class="position-relative">
+                            <input class="form-control border-0 py-3 ps-4 pe-5"
+                                type="email" name="email" placeholder="Your email"
+                                style="background:#0d1b2a; color:#fff;" required>
+                            <button type="submit" class="btn position-absolute top-0 end-0 mt-2 me-2"
+                                style="background:#e74c3c; color:#fff; border:none;">SignUp</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; <a href="#">Urfavcarserv</a>, All Rights Reserved. Designed By <a href="">Osama Yusuf</a></p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'about' %}">About</a>
+                        <a href="{% url 'contact' %}">Contact</a>
+                        <a href="">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn back-to-top">
+        <i class="bi bi-arrow-up text-white"></i>
+    </a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>new WOW().init();</script>
+
+</body>
+
+</html>

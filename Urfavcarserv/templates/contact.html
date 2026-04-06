@@ -1,0 +1,396 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Contact Us — Urfavcarserv</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Contact Urfavcarserv — Car Service Nairobi Kenya" name="description">
+
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Ubuntu', sans-serif; color: #333; }
+
+        /* ── TOPBAR ── */
+        .topbar { background-color: #1a1a2e; padding: 10px 0; }
+        .topbar small { color: #ccc; font-size: 13px; }
+        .topbar i { color: #e74c3c; }
+        .topbar a { color: #aaa; margin-left: 10px; transition: 0.3s; }
+        .topbar a:hover { color: #e74c3c; }
+
+        /* ── NAVBAR ── */
+        .navbar { background: #fff !important; border-bottom: 3px solid #e74c3c; padding: 0; }
+        .navbar-brand span.brand-main { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 1.3rem; color: #1a1a2e; }
+        .navbar-brand span.brand-accent { font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 1.3rem; color: #e74c3c; }
+        .navbar-brand small { font-size: 10px; color: #999; letter-spacing: 2px; text-transform: uppercase; display: block; }
+        .navbar .nav-link { color: #1a1a2e !important; font-weight: 600; padding: 24px 16px !important; font-size: 14px; letter-spacing: 0.5px; text-transform: uppercase; transition: 0.3s; }
+        .navbar .nav-link:hover, .navbar .nav-link.active { color: #e74c3c !important; }
+        .navbar .dropdown-menu { background: #fff; border: none; border-top: 3px solid #e74c3c; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 0 0 8px 8px; }
+        .navbar .dropdown-item { color: #333; padding: 10px 20px; font-weight: 500; font-size: 14px; transition: 0.3s; }
+        .navbar .dropdown-item:hover { background: #e74c3c; color: #fff; }
+        .navbar .btn-quote { background: #e74c3c; color: #fff; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; padding: 12px 24px; border-radius: 4px; border: none; }
+        .navbar .btn-quote:hover { background: #c0392b; color: #fff; }
+
+        /* ── PAGE HEADER ── */
+        .page-header { position: relative; background-size: cover; background-position: center; }
+        .page-header::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
+        .page-header-inner { position: relative; z-index: 1; padding: 80px 0; }
+        .page-header h1 { font-family: 'Barlow', sans-serif; font-weight: 700; }
+        .breadcrumb-item a { color: #e74c3c; text-decoration: none; }
+        .breadcrumb-item + .breadcrumb-item::before { color: #aaa; }
+
+        /* ── CONTACT INFO CARDS ── */
+        .contact-card { background: #fff; border-radius: 8px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-top: 3px solid #e74c3c; transition: 0.3s; text-align: center; }
+        .contact-card:hover { transform: translateY(-4px); }
+        .contact-card .icon-box { background: #e74c3c; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 22px; }
+        .contact-card h5 { font-family: 'Barlow', sans-serif; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
+        .contact-card p { color: #666; font-size: 14px; margin: 0; }
+
+        /* ── CONTACT FORM ── */
+        .contact-form-box { background: #fff; border-radius: 8px; padding: 40px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .contact-form-box .form-control { border: 1px solid #eee; border-radius: 4px; font-size: 14px; }
+        .contact-form-box .form-control:focus { border-color: #e74c3c; box-shadow: none; }
+        .contact-form-box label { font-size: 13px; font-weight: 600; color: #555; }
+        .contact-form-box .btn-send { background: #e74c3c; color: #fff; font-weight: 700; letter-spacing: 1px; border: none; transition: 0.3s; border-radius: 4px; }
+        .contact-form-box .btn-send:hover { background: #c0392b; }
+
+        /* ── SECTION TITLE ── */
+        .section-title { color: #e74c3c; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+        .section-heading { font-family: 'Barlow', sans-serif; font-weight: 700; color: #1a1a2e; }
+        .feature-strip { background-color: white; }
+        .accent-link { color: #e74c3c; font-size: 13px; font-weight: 600; }
+        .map-embed { border: 0; display: block; }
+        .form-heading { font-family: 'Barlow', sans-serif; font-weight: 700; color: #1a1a2e; }
+        .form-input { height: 50px; }
+        .cta-button { background: #0d1b2a; color: white; }
+        .primary-btn { background: #e74c3c; color: white; border: none; }
+
+        /* ── MAP ── */
+        .map-box { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+        /* ── FOOTER ── */
+        .footer-top { background: #16213e; }
+        .footer-top h4 { color: #e74c3c; font-family: 'Barlow', sans-serif; font-weight: 700; margin-bottom: 20px; }
+        .footer-top p { color: #aaa; font-size: 14px; }
+        .footer-top i { color: #e74c3c; }
+        .footer-top .btn-link { color: #aaa; text-decoration: none; display: block; padding: 4px 0; font-size: 14px; transition: 0.3s; }
+        .footer-top .btn-link:hover { color: #e74c3c; padding-left: 6px; }
+        .btn-social { width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #444; color: #aaa; margin-right: 6px; transition: 0.3s; text-decoration: none; }
+        .btn-social:hover { background: #e74c3c; border-color: #e74c3c; color: #fff; }
+        .footer-bottom { background: #1a1a2e; padding: 20px 0; }
+        .footer-bottom p { color: #666; font-size: 13px; margin: 0; }
+        .footer-bottom a { color: #e74c3c; text-decoration: none; }
+        .footer-menu a { color: #666; text-decoration: none; margin-left: 16px; font-size: 13px; transition: 0.3s; }
+        .footer-menu a:hover { color: #e74c3c; }
+
+        /* ── BACK TO TOP ── */
+        .back-to-top { background: #e74c3c; border: none; width: 45px; height: 45px; border-radius: 4px; position: fixed; bottom: 30px; right: 30px; display: none; }
+        .back-to-top:hover { background: #c0392b; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Topbar Start -->
+    <div class="topbar">
+        <div class="container">
+            <div class="row d-none d-lg-flex align-items-center">
+                <div class="col-lg-7">
+                    <div class="d-inline-flex align-items-center me-4">
+                        <i class="fa fa-map-marker-alt me-2"></i>
+                        <small>5 Star Road, Nairobi, Kenya</small>
+                    </div>
+                    <div class="d-inline-flex align-items-center">
+                        <i class="far fa-clock me-2"></i>
+                        <small>Mon - Fri : 07:00 AM - 07:00 PM</small>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-end">
+                    <div class="d-inline-flex align-items-center me-4">
+                        <i class="fa fa-phone-alt me-2"></i>
+                        <small>+254 074 737 838</small>
+                    </div>
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a href="{% url 'home' %}" class="navbar-brand d-flex align-items-center">
+                <div style="background:#e74c3c; width:42px; height:42px; border-radius:6px; display:flex; align-items:center; justify-content:center; margin-right:10px;">
+                    <i class="fa fa-car text-white"></i>
+                </div>
+                <div>
+                    <span class="brand-main">Urfavcar</span><span class="brand-accent">Serv</span>
+                    <small>Auto Service Center</small>
+                </div>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                style="border: 2px solid #e74c3c; padding: 6px 10px;">
+                <i class="fa fa-bars" style="color:#e74c3c;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto">
+                    <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                    <a href="{% url 'service' %}" class="nav-item nav-link">Services</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu">
+                            <a href="{% url 'booking' %}" class="dropdown-item">Booking</a>
+                            <a href="{% url 'team' %}" class="dropdown-item">Technicians</a>
+                            <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
+                            <a href="{% url 'error404' %}" class="dropdown-item">404 Page</a>
+                        </div>
+                    </div>
+                    <a href="{% url 'contact' %}" class="nav-item nav-link active">Contact</a>
+                </div>
+                <a href="{% url 'booking' %}" class="btn btn-quote d-none d-lg-block">
+                    <i class="fa fa-calendar-check me-2"></i> Book A Service
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="page-header mb-5" style="background-image: url('{% static "newimg/serv-7.jpg" %}');">
+        <div class="page-header-inner">
+            <div class="container text-center">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Contact Us</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center text-uppercase">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Contact Info Cards Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp mb-5" data-wow-delay="0.1s">
+                <p class="section-title">✦ GET IN TOUCH ✦</p>
+                <h2 class="section-heading">Contact For Any Query</h2>
+            </div>
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="contact-card">
+                        <div class="icon-box"><i class="fa fa-map-marker-alt"></i></div>
+                        <h5>Our Location</h5>
+                        <p>5 Star Road, Nairobi, Kenya</p>
+                        <p class="mt-1 accent-link">Find Us On Map →</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="contact-card">
+                        <div class="icon-box"><i class="fa fa-phone-alt"></i></div>
+                        <h5>Call Us</h5>
+                        <p>+254 074 737 838</p>
+                        <p>Mon - Fri: 07:00 AM - 07:00 PM</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="contact-card">
+                        <div class="icon-box"><i class="fa fa-envelope"></i></div>
+                        <h5>Email Us</h5>
+                        <p>binanas277@gmail.com</p>
+                        <p>We reply within 24 hours</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map & Form Start -->
+            <div class="row g-4">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="map-box">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.35853743783!2d36.6827!3d-1.3031934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1234567890"
+                            width="100%" height="450" class="map-embed"
+                            allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="contact-form-box">
+                        <h3 class="mb-4 form-heading">
+                            Send Us A Message
+                        </h3>
+                        {% if errors %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Please fix the following errors:</strong>
+                                {% for field, error_list in errors.items %}
+                                    <div><strong>{{ field }}:</strong> {{ error_list|join:", " }}</div>
+                                {% endfor %}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endif %}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="{{ form.name.id_for_label }}" class="form-label text-muted mb-2">{{ form.name.label }}</label>
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <div class="text-danger small mt-1">{{ form.name.errors|join:", " }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label text-muted mb-2">{{ form.email.label }}</label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="text-danger small mt-1">{{ form.email.errors|join:", " }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="{{ form.phone.id_for_label }}" class="form-label text-muted mb-2">{{ form.phone.label }}</label>
+                                    {{ form.phone }}
+                                    {% if form.phone.errors %}
+                                        <div class="text-danger small mt-1">{{ form.phone.errors|join:", " }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="{{ form.subject.id_for_label }}" class="form-label text-muted mb-2">{{ form.subject.label }}</label>
+                                    {{ form.subject }}
+                                    {% if form.subject.errors %}
+                                        <div class="text-danger small mt-1">{{ form.subject.errors|join:", " }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12">
+                                    <label for="{{ form.message.id_for_label }}" class="form-label text-muted mb-2">{{ form.message.label }}</label>
+                                    {{ form.message }}
+                                    {% if form.message.errors %}
+                                        <div class="text-danger small mt-1">{{ form.message.errors|join:", " }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-send w-100 py-3" type="submit">
+                                        Send Message <i class="fa fa-paper-plane ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Map & Form End -->
+
+        </div>
+    </div>
+    <!-- Contact Info Cards End -->
+
+
+    <!-- Footer Start -->
+    <div class="footer-top pt-5 mt-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4>Urfavcarserv</h4>
+                    <p>Your trusted car service center in Nairobi, Kenya. Quality repairs, expert technicians, modern equipment.</p>
+                    <p><i class="fa fa-map-marker-alt me-2"></i>5 Star Road, Nairobi, Kenya</p>
+                    <p><i class="fa fa-phone-alt me-2"></i>+254 074 737 838</p>
+                    <p><i class="fa fa-envelope me-2"></i>binanas277@gmail.com</p>
+                    <div class="mt-3">
+                        <a class="btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn-social" href=""><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Opening Hours</h4>
+                    <p class="mb-1 accent-link">Monday - Friday</p>
+                    <p>09:00 AM - 09:00 PM</p>
+                    <p class="mb-1 accent-link">Saturday - Sunday</p>
+                    <p>09:00 AM - 12:00 PM</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Our Services</h4>
+                    <a class="btn-link" href="{% url 'service' %}">Diagnostic Test</a>
+                    <a class="btn-link" href="{% url 'service' %}">Engine Servicing</a>
+                    <a class="btn-link" href="{% url 'service' %}">Tires Replacement</a>
+                    <a class="btn-link" href="{% url 'service' %}">Oil Changing</a>
+                    <a class="btn-link" href="{% url 'service' %}">Vacuum Cleaning</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for updates, offers, and the latest automotive tips.</p>
+                    <form method="POST" action="{% url 'newsletter' %}">
+                        {% csrf_token %}
+                        <div class="position-relative">
+                            <input class="form-control border-0 py-3 ps-4 pe-5"
+                                type="email" name="email" placeholder="Your email"
+                                style="background:#0d1b2a; color:#fff;" required>
+                            <button type="submit" class="btn position-absolute top-0 end-0 mt-2 me-2"
+                                style="background:#e74c3c; color:#fff; border:none;">SignUp</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; <a href="#">Urfavcarserv</a>, All Rights Reserved. Designed By <a href="">Osama Yusuf</a></p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="{% url 'home' %}">Home</a>
+                        <a href="{% url 'about' %}">About</a>
+                        <a href="{% url 'contact' %}">Contact</a>
+                        <a href="">FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn back-to-top">
+        <i class="bi bi-arrow-up text-white"></i>
+    </a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script>new WOW().init();</script>
+
+</body>
+</html>

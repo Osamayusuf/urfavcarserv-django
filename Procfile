@@ -1,0 +1,1 @@
+web: gunicorn urfavcarservproject.wsgi:application
